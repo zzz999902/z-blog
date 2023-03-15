@@ -1,3 +1,3 @@
 # introduce
 
-这是我的博客,记录我的学习,分享我的生活
+This is my blog, recording my study and sharing my life
