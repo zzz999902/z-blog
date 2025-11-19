@@ -1,94 +1,132 @@
-// @ts-check
-// Note: type annotations allow type checking and IDEs autocompletion
-
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
-/** @type {import('@docusaurus/types').Config} */
-const config = {
-  title: 'I certainly won`t',
-  tagline: 'Try harder',
-  favicon: 'img/favicon.ico',
-  // Set the production url of your site here
-  url: 'https://z-blog-kappa.vercel.app/',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
+/** @type {import('@docusaurus/types').DocusaurusConfig} */
+module.exports = {
+  title: 'Djamaile Rahamat',
+  tagline:
+    'I like full-stack development. Also, I am interested in the cloud, coding & e-sports.',
+  url: 'https://djamaile.dev',
   baseUrl: '/',
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'I certainly won`t', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-
-  // Even if you don't use internalization, you can use this field to set useful
-  // metadata like html lang. For example, if your site is Chinese, you may want
-  // to replace "en" with "zh-Hans".
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+  favicon: 'img/favicon.ico',
+  organizationName: 'djamaile', // Usually your GitHub org/user name.
+  projectName: 'portfolio', // Usually your repo name.
+  trailingSlash: true,
+  plugins: [
+    [
+      '@docusaurus/plugin-pwa',
+      {
+        debug: true,
+        offlineModeActivationStrategies: [
+          'appInstalled',
+          'standalone',
+          'queryString',
+        ],
+        pwaHead: [
+          {
+            tagName: 'link',
+            rel: 'icon',
+            href: '/img/mob-2.png',
+          },
+          {
+            tagName: 'link',
+            rel: 'manifest',
+            href: 'manifest.json', // your PWA manifest
+          },
+          {
+            tagName: 'meta',
+            name: 'theme-color',
+            content: 'rgb(37, 194, 160)',
+          },
+          {
+            tagName: 'meta',
+            name: 'apple-mobile-web-app-capable',
+            content: 'yes',
+          },
+          {
+            tagName: 'meta',
+            name: 'apple-mobile-web-app-status-bar-style',
+            content: '#000',
+          },
+          {
+            tagName: 'link',
+            rel: 'apple-touch-icon',
+            href: 'img/docusaurus.png',
+          },
+          {
+            tagName: 'link',
+            rel: 'mask-icon',
+            href: 'img/docusaurus.png',
+            color: 'rgb(62, 204, 94)',
+          },
+          {
+            tagName: 'meta',
+            name: 'msapplication-TileImage',
+            content: 'img/docusaurus.png',
+          },
+          {
+            tagName: 'meta',
+            name: 'msapplication-TileColor',
+            content: '#000',
+          },
+        ],
+      },
+    ],
+  ],
+  themeConfig: {
+    navbar: {
+      title: 'Djamaile Rahamat',
+      logo: {
+        alt: 'My Site Logo',
+        src: 'img/mob-2.png',
+      },
+      items: [
+        { to: '/blog', label: 'Blog', position: 'left' },
+        {
+          href: 'https://github.com/djamaile/portfolio',
+          label: 'GitHub',
+          position: 'right',
+        },
+      ],
+    },
+    googleAnalytics: {
+      trackingID: 'UA-204542359-2',
+      anonymizeIP: true, // Should IPs be anonymized?
+    },
+    footer: {
+      style: 'light',
+      copyright: `Copyright © ${new Date().getFullYear()} Djamaile Rahamat, Inc. Built with Docusaurus.`,
+    },
+    prism: {
+      theme: lightCodeTheme,
+      darkTheme: darkCodeTheme,
+    },
+    metadatas: [
+      { name: 'robots', content: 'max-image-preview:large' },
+      { name: 'monetization', content: '$ilp.uphold.com/fYPB8Pjyig3z' }
+    ],
   },
-
   presets: [
     [
-      'classic',
-      /** @type {import('@docusaurus/preset-classic').Options} */
-      ({
-        docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-        },
+      '@docusaurus/preset-classic',
+      {
+        docs: false,
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/djamaile/portfolio/edit/master/',
+          feedOptions: {
+            type: 'all',
+          },
+          postsPerPage: 3,
+          truncateMarker: /<!--\s*(truncate)\s*-->/,
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
-      }),
+      },
     ],
   ],
-
-  themeConfig:
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-    ({
-      // Replace with your project's social card
-      announcementBar: {
-        id: 'support_us',
-        content:
-          '⭐️ 如果这个网站能帮助到你,欢迎给一个star支持作者  <a target="_blank" rel="noopener noreferrer" href="https://github.com/zzz999902/blog">GitHub</a>',
-        backgroundColor: '#fafbfc',
-        textColor: '#091E42',
-        isCloseable: true,
-      },
-      navbar: {
-        title: 'I certainly won`t',
-        items: [
-          {
-            type: 'doc',
-            docId: 'intro',
-            position: 'right',
-            label: 'Tutorial',
-          },
-          { to: '/blog', label: 'Blog', position: 'right' },
-          {
-            href: 'https://github.com/facebook/docusaurus',
-            label: 'GitHub',
-            position: 'right',
-          },
-        ],
-      },
-      prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
-      },
-    }),
 };
-
-module.exports = config;
